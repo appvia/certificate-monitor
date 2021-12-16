@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: docker.pkg.github.com/appvia/certificate-monitor
+          images: docker.pkg.github.com/appvia/certificate-monitor/certificate-monitor
 
       - name: Build and export to Docker
         uses: docker/build-push-action@v2
