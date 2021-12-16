@@ -1,9 +1,11 @@
 package monitor
 
 import (
+	"context"
+	"time"
+
 	"github.com/sirupsen/logrus"
 	"k8s.io/client-go/kubernetes"
-	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -25,9 +27,9 @@ func (m *CertExpiryMonitor) GetIngressDomains() ([]string, error) {
 		return out, nil
 	}
 	listOptions := metav1.ListOptions{}
-	extApi := m.KubeClient.ExtensionsV1beta1()
+	extApi := m.KubeClient.NetworkingV1()
 
-	ings, err := extApi.Ingresses("").List(listOptions)
+	ings, err := extApi.Ingresses("").List(context.Background(), listOptions)
 	if err != nil {
 		return nil, err
 	}

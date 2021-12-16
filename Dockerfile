@@ -1,15 +1,12 @@
-FROM golang:1.13 as builder
+FROM golang:1.17 as builder
 
 WORKDIR /go/src/github.com/appvia/certificate-monitor
-
-RUN go get github.com/golang/dep/cmd/dep
-COPY go.mod go.sum ./
 
 COPY . ./
 
 RUN CGO_ENABLED=0 GOOS=linux go install -v github.com/appvia/certificate-monitor
 
-FROM alpine:3.11.3
+FROM alpine:latest
 
 RUN apk --no-cache add ca-certificates
 
