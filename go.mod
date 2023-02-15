@@ -3,7 +3,7 @@ module github.com/appvia/certificate-monitor
 go 1.17
 
 require (
-	github.com/prometheus/client_golang v1.11.0
+	github.com/prometheus/client_golang v1.11.1
 	github.com/sirupsen/logrus v1.8.1
 	k8s.io/apimachinery v0.23.0
 	k8s.io/client-go v0.23.0
